@@ -1,0 +1,38 @@
+.contactUs .container-fluid {
+  background-image: url("/img/1.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding: 20px;
+}
+
+.contactUs .container-fluid .contactBox {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 10px;
+  width: 40rem;
+}
+
+.contactUs .container-fluid .contactBox .formBox {
+  font-size: 20px;
+}
+
+.contactUs .container-fluid .contactBox .formBox label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.contactUs .container-fluid .contactBox .formBox input,
+.contactUs .container-fluid .contactBox .formBox textarea {
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  padding: 5px;
+  width: 100%;
+}
+
+.contactUs .container-fluid .contactBox .formBox input {
+  margin-bottom: 5px;
+}
+/*# sourceMappingURL=ContactUs.css.map */

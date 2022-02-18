@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "ContactUs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/ContactUs.css" rel="stylesheet" />
+
+<section class="contactUs">
+    <div class="container-fluid d-flex justify-content-center">
+        <div class="contactBox">
+            <h1 class="title">聯絡我們</h1>
+            <div class="formBox">
+                <label for="">你的名字：</label>
+                <input type="text" placeholder="王大明">
+                <label for="">你想表達的事情：</label>
+                <input type="text" placeholder="Ex功能有問題">
+                <label for="">詳細情況：</label>
+                <textarea name="details" id="details" cols="30" rows="10" placeholder="Ex在通報過程中按送出但沒有成功新增"></textarea>
+            </div>
+            <input type="submit" class="btn btn-secondary">
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,504 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  /* Webkit */
+  width: 0;
+  height: 0;
+}
+
+.hs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  overflow-x: scroll;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  scrollbar-width: none;
+  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE 10+ */
+  -webkit-overflow-scrolling: touch;
+  margin: 0 -20px;
+  cursor: pointer;
+  position: relative;
+}
+
+.hs__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.hs__headline {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.hs__arrows {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.hs__arrows .arrow:before {
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  content: "";
+  background: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNSIgaGVpZ2h0PSI5IiB2aWV3Qm94PSIwIDAgMTUgOSI+Cgk8cGF0aCBmaWxsPSIjMzMzMzMzIiBkPSJNNy44NjcgOC41NzRsLTcuMjItNy4yMi43MDctLjcwOEw3Ljg2NyA3LjE2IDE0LjA1Ljk4bC43MDYuNzA3Ii8+Cjwvc3ZnPgo=");
+  background-size: contain;
+  width: 18px;
+  height: 12px;
+  cursor: pointer;
+}
+
+.hs__arrows .arrow:hover {
+  color: #f3f0d7;
+}
+
+.hs__arrows .arrow.arrow-prev:before {
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  margin-right: 10px;
+}
+
+.hs__arrows .arrow.arrow-next:before {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+
+.hs__item {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  -ms-flex-preferred-size: calc(100% / 4 - (10px * 2) - (20px / 4));
+      flex-basis: calc(100% / 4 - (10px * 2) - (20px / 4));
+  margin: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+@media only screen and (max-width: 990px) {
+  .hs__item {
+    -ms-flex-preferred-size: calc(100% / 3 - (10px * 2) - (20px / 3));
+        flex-basis: calc(100% / 3 - (10px * 2) - (20px / 3));
+  }
+}
+
+.hs__item:last-child:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 10px;
+  height: 1px;
+  right: calc(10px * 2 * -1);
+}
+
+.hs__item:first-child {
+  margin-left: calc(10px * 2);
+}
+
+.hs__item__description {
+  z-index: 1;
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  margin: 10px 0;
+}
+
+.hs__item__subtitle {
+  color: #000;
+  display: block;
+}
+
+.hs__item__image__wrapper {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+}
+
+.hs__item__image {
+  pointer-events: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@media only screen and (min-width: 990px) {
+  .hs__wrapper {
+    overflow: hidden;
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .hs__wrapper .hs__arrows {
+    display: none;
+  }
+  .hs__wrapper .hs__item {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 calc(23% - 10px * 2);
+            flex: 1 0 calc(23% - 10px * 2);
+  }
+}
+
+@media only screen and (hover: none) and (pointer: coarse) and (max-width: 990px) {
+  .hs__wrapper .hs__item {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 0 calc(45% - 10px * 2);
+            flex: 1 0 calc(45% - 10px * 2);
+  }
+}
+
+/* Base Styling */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  color: white;
+  background: #cee5d0;
+  line-height: 1.5;
+  letter-spacing: 0.15px;
+}
+
+.rescueList .container {
+  max-width: auto;
+  padding: calc(10px * 2);
+  margin: 0 auto;
+  background: #cee5d0;
+  mix-blend-mode: invert;
+  position: relative;
+}
+
+.rescueList .container:after {
+  content: "";
+  width: 100vw;
+  height: 100%;
+  background: #f3f0d7;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: -1;
+}
+
+@media only screen and (min-width: 990px) {
+  .rescueList .container {
+    padding: calc(10px * 4) calc(10px * 8);
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+.header {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.7)), to(rgba(0, 0, 0, 0.6))), url("../img/3.jpg");
+  background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(0, 0, 0, 0.6)), url("../img/3.jpg");
+  background-size: cover;
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.header nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.header nav .imgBox {
+  width: 100px;
+  height: 100px;
+  margin-left: 20px;
+}
+
+.header nav .imgBox .logo {
+  width: 100%;
+  height: 100%;
+}
+
+.header nav ul {
+  position: absolute;
+  z-index: 100000;
+  top: 15%;
+  left: -100%;
+  right: 100%;
+  padding-left: 0;
+}
+
+.header nav ul li {
+  position: relative;
+  list-style: none;
+  background-color: #fff;
+  display: block;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.header nav ul li .subs {
+  position: relative;
+  top: 100%;
+  left: 0;
+}
+
+.header nav ul li .subs li {
+  background-color: #f7f2c2;
+}
+
+.header nav ul li .subs li a {
+  font-size: 25px;
+}
+
+.header nav ul li .subs li:hover {
+  background-color: #fff;
+}
+
+.header nav ul li:hover {
+  background-color: #f7f2c2;
+}
+
+.header nav ul li a {
+  text-decoration: none;
+  margin: 20px;
+  color: black;
+  font-size: 35px;
+}
+
+.header nav ul.active {
+  left: 0;
+  right: 0;
+}
+
+.header nav .fa-bars {
+  font-size: 60px;
+  margin: 20px;
+  cursor: pointer;
+}
+
+.header .text-box {
+  text-align: center;
+}
+
+.header .text-box h1 {
+  font-size: 50px;
+  margin-bottom: 40px;
+  margin-top: 200px;
+}
+
+.header .text-box .txtContent {
+  font-size: 30px;
+  letter-spacing: 3px;
+  margin-bottom: 50px;
+  color: black;
+  font-weight: 900px;
+}
+
+.header .text-box .txtContent p {
+  margin: 10px;
+}
+
+.header .text-box a {
+  font-size: 20px;
+  margin-right: 5px;
+}
+
+.contactUs .container-fluid {
+  background-image: url("/img/1.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding: 20px;
+}
+
+.contactUs .container-fluid .contactBox {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 10px;
+  width: 40rem;
+}
+
+.contactUs .container-fluid .contactBox .formBox {
+  font-size: 20px;
+}
+
+.contactUs .container-fluid .contactBox .formBox label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.contactUs .container-fluid .contactBox .formBox input,
+.contactUs .container-fluid .contactBox .formBox textarea {
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  padding: 5px;
+  width: 100%;
+}
+
+.contactUs .container-fluid .contactBox .formBox input {
+  margin-bottom: 5px;
+}
+
+.footer {
+  background-color: #272727;
+  text-align: center;
+  color: rgba(247, 241, 192, 0.7);
+}
+
+.footer .footerBox {
+  padding: 10px;
+}
+
+.footer .footerBox p {
+  margin-bottom: 5px;
+}
+
+.footer .footerBox .navbarFooter {
+  margin-bottom: 5px;
+}
+
+.footer .footerBox .navbarFooter a {
+  text-decoration: none;
+  color: #aefdb7;
+  margin-right: 15px;
+}
+
+.footer .footerBox .navbarFooter a:hover {
+  color: #58795b;
+}
+
+.footer .footerBox .mediaIcon i {
+  color: #f2f2f2;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.footer .footerBox .mediaIcon i:hover {
+  color: #fc8686;
+}
+
+@media all and (min-width: 600px) {
+  .header .text-box h1 {
+    font-size: 80px;
+  }
+  .contactUs .container-fluid .contactBox {
+    width: 40rem;
+    padding: 30px;
+  }
+}
+
+@media all and (min-width: 1300px) {
+  .header {
+    background-image: url("../img/5.jpg");
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+  }
+  .header nav {
+    margin: 0 80px;
+    padding-top: 20px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .header nav ul {
+    position: static;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-top: 0;
+    left: 0;
+    right: 0;
+  }
+  .header nav ul li {
+    position: relative;
+    font-size: 20px;
+    background-color: transparent;
+    padding: 5px;
+  }
+  .header nav ul li .subs {
+    position: absolute;
+    display: block;
+  }
+  .header nav ul li .subs li {
+    background-color: #3c523f;
+    padding: 5px;
+  }
+  .header nav ul li .subs li a {
+    font-size: 23px;
+  }
+  .header nav ul li .subs li a:hover {
+    color: #3c523f;
+  }
+  .header nav ul li .subs li:hover {
+    background-color: #81a785;
+  }
+  .header nav ul li:hover {
+    background-color: #698f6d;
+  }
+  .header nav ul li a {
+    font-size: 28px;
+    color: #f7f2c2;
+  }
+  .header nav .fa-bars {
+    display: none;
+  }
+  .header .text-box {
+    text-align: left;
+    height: 800px;
+    width: auto;
+    margin-top: 150px;
+    margin-left: 50px;
+  }
+  .header .text-box h1 {
+    margin-bottom: 20px;
+    font-size: 80px;
+  }
+  .header .text-box .txtContent {
+    margin-bottom: 50px;
+  }
+  .header .text-box .txtContent p {
+    margin-left: 0;
+    font-size: 30px;
+  }
+}
+/*# sourceMappingURL=indexVer2.css.map */

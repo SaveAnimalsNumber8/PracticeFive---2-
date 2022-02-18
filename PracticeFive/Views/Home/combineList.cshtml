@@ -1,0 +1,90 @@
+﻿@model PracticeFive.ViewModel.combineRescueTransfer
+
+@{
+    ViewBag.Title = "combine";
+    Layout = "~/Views/Shared/_IndexVer2.cshtml";
+}
+
+<link href="~/Content/CardCarousel.css" rel="stylesheet" />
+
+<section class="rescueList">
+    <div class="container">
+        <div class="hs__wrapper">
+            <div class="hs__header">
+                <h2 class="hs__headline">當前通報資訊</h2>
+                <div class="hs__arrows">
+                    <a class="arrow arrow-prev"></a>
+                    <a class="arrow arrow-next"></a>
+                </div>
+            </div>
+            <ul class="hs">
+                @foreach (var item in Model.tRescue)
+                {
+
+                <li class="hs__item">
+                    <div class="hs__item__image__wrapper">
+                        <img class="hs__item__image" src="~/UpImg/@Html.DisplayFor(modleItem => item.RescuePictures)" alt="">
+                    </div>
+
+                    <div class="hs__item__description">
+                        <p class="hs__item__title">@Html.DisplayFor(modelItem => item.RescueEvent)</p>
+                        <span class="hs__item__subtitle">@Html.DisplayFor(modelItem => item.tPosition.positionPosition)</span>
+                        <span class="hs__item__subtitle">@Html.DisplayFor(modelItem => item.tPosition1.positionPosition)</span>
+                    </div>
+                    @if (Session["UserID"] != null)
+                    {
+                        @Html.ActionLink("更多資訊", "More", "RescueMember", new { id = item.RescueID }, new { @class = "btn btn-primary" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("更多資訊", "More", "Rescue", new { id = item.RescueID }, new { @class = "btn btn-primary" })
+                    }
+                </li>
+                    
+                }
+            </ul>
+
+
+        </div>
+    </div>
+    <div class="container">
+        <div class="hs__wrapper">
+            <div class="hs__header">
+                <h2 class="hs__headline">當前送養資訊</h2>
+                <div class="hs__arrows">
+                    <a class="arrow arrow-prev"></a>
+                    <a class="arrow arrow-next"></a>
+                </div>
+            </div>
+            <ul class="hs">
+                @foreach (var item in Model.tTransfer)
+                {
+                <li class="hs__item">
+                    <div class="hs__item__image__wrapper">
+                        <img class="hs__item__image" src="~/UpImg/@Html.DisplayFor(modleItem => item.TransferPictures)" alt="">
+                    </div>
+
+                    <div class="hs__item__description">
+                        <p class="hs__item__title">@Html.DisplayFor(modelItem => item.TransferName)</p>
+                        <span class="hs__item__subtitle">@Html.DisplayFor(modelItem => item.tPosition.positionPosition)</span>
+                        <span class="hs__item__subtitle">@Html.DisplayFor(modelItem => item.tPosition1.positionPosition)</span>
+                    </div>
+                    @if (Session["UserID"] != null)
+                    {
+                        @Html.ActionLink("更多資訊", "More", "TransferMember", new { id = item.TransferID }, new { @class = "btn btn-primary" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("更多資訊", "More", "Transfer", new { id = item.TransferID }, new { @class = "btn btn-primary" })
+                    }
+
+                </li>
+                }
+            </ul>
+
+        </div>
+    </div>
+</section>
+
+<script src="~/Scripts/CardCarousel.js"></script>
+

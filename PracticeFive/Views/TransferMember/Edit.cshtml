@@ -1,0 +1,209 @@
+﻿@model PracticeFive.Models.tTransfer
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<link href="~/Content/TransferEdit.css" rel="stylesheet" />
+
+@using (Html.BeginForm("Edit", "TransferMember", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <!-- More Details Section -->
+    <section class="moreDetails d-flex justify-content-center">
+        <div class="transferContainer">
+            <div class="img col-sm-12 col-md-6">
+                <div class="viewBox mb-3">
+                    <img src="~/UpImg/@Html.DisplayFor(model => model.TransferPictures)" class="origin pic">
+                </div>
+                <div class="viewBox preview">
+                    <img src="" id="preview" class="pic">
+                </div>
+                <input type="file" class="upl" name="upImg" value="upImg" id="upImg"/>
+            </div>
+            <div class="details col-sm-12 col-md-6">
+                <div class="content">
+                    <div class="transfercol" hidden>
+                        @Html.LabelFor(model => model.TransferID)
+                        <p>@Html.EditorFor(model => model.TransferID) </p>
+                        @*<label for="">他的種族：<p class="transferSpecies">狗</p></label>*@
+                    </div>
+                    <div class="transfercol">
+                        @Html.LabelFor(model => model.TransferSpecies)
+                        <p>@Html.DropDownListFor(m => m.TransferSpecies, (SelectList)ViewBag.Species, "請選擇", new { @class = "text-primary", @id = "Species" }) </p>
+                        @*<label for="">他的種族：<p class="transferSpecies">狗</p></label>*@
+                    </div>
+                    <div class="transfercol">
+                        @Html.LabelFor(model => model.TransferName)
+                        <p>
+                            @Html.EditorFor(model => model.TransferName, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TransferName, "", new { @class = "text-danger" })
+                        </p>
+                        @*<label for="">他叫做：</label><p class="transferName ">布丁</p>*@
+                    </div>
+                    <div class="transfercol">
+                        @*<label for="" class="TransferDone">案件狀態：</label><p class="transferdon">未結案</p>*@
+                        @Html.LabelFor(model => model.TransferDone)
+                        <p>
+                            @switch (Model.TransferDone)
+                            {
+                                case "已結案":
+                                    <select id="selectorTransferDone" name="selectorTransferDone" style="">
+                                        <option value="請選擇">請選擇</option>
+                                        <option selected="selected" value="已結案">已結案</option>
+                                        <option value="未結案">未結案</option>
+                                    </select>
+                                    break;
+                                case "未結案":
+                                    <select id="selectorTransferDone" name="selectorTransferDone" style="">
+                                        <option value="請選擇">請選擇</option>
+                                        <option value="已結案">已結案</option>
+                                        <option selected="selected" value="未結案">未結案</option>
+                                    </select>
+                                    break;
+                            }
+                        </p>
+                    </div>
+
+
+                    <div class="transfercol">
+                        @*<label for="">
+                                他目前住在：<p class="transferPosition ">台北市</p><p class="transferPosition  ">大安區</p>
+                            </label>*@
+                        @Html.LabelFor(model => model.TransferPositionCity)
+                        <p>
+                            @Html.DropDownListFor(m => m.TransferPositionCity, (IEnumerable<SelectListItem>)ViewBag.City, "請選擇", new { @class = "text-primary", @id = "City" })
+                            <span>@Html.DropDownListFor(m => m.TransferPositionCountry, (IEnumerable<SelectListItem>)ViewBag.Country, "請選擇", new { @class = "text-primary", @id = "Country" })</span>
+                            @Html.ValidationMessageFor(model => model.TransferPositionCity, "", new { @class = "text-danger" })
+                            @Html.ValidationMessageFor(model => model.TransferPositionCountry, "", new { @class = "text-danger" })
+                        </p>
+
+                    </div>
+                    <div class="transfercol">
+                        @*<label for="">
+                                他現在的狀況：
+                                <p class="transferSituation 3">身體健康良好，無白血愛滋。</p>
+                            </label>*@
+                        @Html.LabelFor(model => model.TransferSituation)
+                        <p>
+                            @Html.EditorFor(model => model.TransferSituation, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TransferSituation, "", new { @class = "text-danger" })
+                        </p>
+                    </div>
+                    <div class="transfercol">
+                        @*<label for="">
+                                認養條件：
+                                <p class="transferRequest">成年，經濟獨立。<br>有一些貸款一大情緒清除地方他是方面演出顯示，瞬間士兵一家此刻家族股市，之一營銷，休閒一個授權有限廠商，安裝專業確實動物，四周威脅五年固定諾基亞化工，完美士兵走勢意大利預測魯蛇你怎不來中間手術賓館是怎麼總經理，此外女士相信和諧有一定環境實際舉辦主演推坑大魔。</p>
+                            </label>*@
+                        @Html.LabelFor(model => model.TransferRequest)
+                        <p>
+                            @Html.EditorFor(model => model.TransferRequest, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TransferRequest, "", new { @class = "text-danger" })
+                        </p>
+                    </div>
+                    <div class="transfercol">
+                        @*<label for="">他的性別：<p class="transferGender ">公</p></label>*@
+                        @Html.LabelFor(model => model.TransferGender, htmlAttributes: new { @class = "control-label col-md-2" })
+
+                        <p>
+                            @switch (Model.TransferGender)
+                            {
+                                case "公":
+                                    <select id="selectorTransferGender" name="selectorTransferGender" style="">
+                                        <option value="請選擇">請選擇</option>
+                                        <option selected="selected" value="公">公</option>
+                                        <option value="母">母</option>
+                                        <option value="不明">不明</option>
+                                    </select>
+                                    break;
+                                case "母":
+                                    <select id="selectorTransferGenderr" name="selectorTransferGender" style="">
+                                        <option value="請選擇">請選擇</option>
+                                        <option value="公">公</option>
+                                        <option selected="selected" value="母">母</option>
+                                        <option value="不明">不明</option>
+                                    </select>
+                                    break;
+                                case "不明":
+                                    <select id="selectorTransferGender" name="selectorTransferGender" style="">
+                                        <option value="請選擇">請選擇</option>
+                                        <option value="公">公</option>
+                                        <option value="母">母</option>
+                                        <option selected="selected" value="不明">不明</option>
+                                    </select>
+                                    break;
+                            }
+                        </p>
+                    </div>
+                    <div class="transfercol">
+                        @*<label for="">結紮了沒：<p class="transferNeuter ">結紮了</p></label>*@
+                        @Html.LabelFor(model => model.TransferNeuter)
+                        <p>
+                            @switch (Model.TransferNeuter)
+                            {
+                                case "結紮了":
+                                    <select id="selectorTransferNeuter" name="selectorTransferNeuter" style="">
+                                        <option value="請選擇">請選擇</option>
+                                        <option selected="selected" value="結紮了">結紮了</option>
+                                        <option value="由認養人負責結紮">由認養人負責結紮</option>
+                                    </select>
+                                    break;
+                                case "由認養人負責結紮":
+                                    <select id="selectorTransferNeuter" name="selectorTransferNeuter" style="">
+                                        <option value="請選擇">請選擇</option>
+                                        <option value="結紮了">結紮了</option>
+                                        <option selected="selected" value="由認養人負責結紮">由認養人負責結紮</option>
+                                    </select>
+                                    break;
+                            }
+                        </p>
+
+                    </div>
+                    <div class="transfercol contactinfo">
+                        @*<label for="">聯絡人：<p class="transferContactPerson ">李先生</p></label>*@
+                        @Html.LabelFor(model => model.TransferContactPerson)
+                        <p>
+                            @Html.EditorFor(model => model.TransferContactPerson, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TransferContactPerson, "", new { @class = "text-danger" })
+                        </p>
+                    </div>
+                    <div class="transfercol contactinfo">
+                        @*<label for="">聯絡方式：<p class="transferContactWay">手機 0912712712</p></label>*@
+                        @Html.LabelFor(model => model.TransferContactWay)
+                        <p>
+                            @Html.EditorFor(model => model.TransferContactWay, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.TransferContactWay, "", new { @class = "text-danger" })
+                        </p>
+                    </div>
+                </div>
+                <div class="btn d-flex justify-content-between">
+                    @if (Convert.ToInt32(Session["UserID"]) == Model.TransferMemberID)
+                    {
+                        <div class="user">
+                            @*<input type="submit" value="編輯" class="btn btn-warning" onclick="@Url.Action("Edit", "TransferMember")">
+                                <input type="submit" value="刪除" class="btn btn-danger">*@
+                            <input type="submit" value="儲存修改" class="btn btn-warning">
+                        </div>
+                    }
+                    <div class="viewer">
+                        @*<input type="submit" value="回到清單" class="btn btn-info">*@
+                        @if (Session["UserID"] != null)
+                        {
+                            @Html.ActionLink("回到清單", "List", "TransferMember", null, new { @class = "btn btn-info" })
+                        }
+                        else
+                        {
+                            @Html.ActionLink("回到清單", "List", "Transfer", null, new { @class = "btn btn-info" })
+                        }
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+}
+    <script src="~/Scripts/TransferEdit.js"></script>
